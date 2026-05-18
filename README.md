@@ -10,6 +10,7 @@
 - `scripts/build.mjs`: `site` を `dist` にコピーするビルド
 - `.github/workflows/test-actions.yml`: CIワークフロー（PR/Push向け）
 - `.github/workflows/deploy-pages.yml`: GitHub Pagesデプロイワークフロー（master push向け）
+- `.github/workflows/auto-merge.yml`: PRの自動マージ有効化ワークフロー
 
 ## ローカル実行
 
@@ -22,8 +23,15 @@ npm run build
 ## ワークフローの動き
 
 - featureブランチでPRを作成するとCI（install/test/build）を実行
+- PR作成/更新時にauto-mergeを自動で有効化（条件を満たすと自動マージ）
 - `master`へマージされたときのみPagesへデプロイ
 - 自動revertは行わない
+
+## 自動マージを使うための追加設定
+
+1. Settings > General > Pull Requests > `Allow auto-merge` を有効化
+2. Settings > Rules > Rulesets の `master` 向けルールで、`ci` をRequired checksに指定
+3. `Restrict updates` を使う場合は、必要に応じてGitHub Actionsによるマージを許可
 
 ## 重要: PR必須 + CI失敗時に`master`へ反映させない設定（最新UI）
 
