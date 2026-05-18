@@ -24,15 +24,21 @@ npm run build
 - `master`へマージされたときのみPagesへデプロイ
 - 自動revertは行わない
 
-## 重要: PR必須 + CI失敗時に`master`へ反映させない設定
+## 重要: PR必須 + CI失敗時に`master`へ反映させない設定（最新UI）
 
-この挙動はGitHubのブランチ保護で実現します。以下を`master`に設定してください。
+現在のGitHubでは、`Rulesets`（ルールセット）で設定する方法が推奨です。
 
-1. Settings > Branches > Add branch protection rule
-2. Branch name pattern: `master`
-3. `Require a pull request before merging` を有効化
-4. `Require status checks to pass before merging` を有効化
-5. Required checksに `ci` を追加
-6. 必要なら `Do not allow bypassing the above settings` も有効化
+1. Settings > Rules > Rulesets > New ruleset > New branch ruleset
+2. Ruleset nameは任意（例: `protect-master`）
+3. Enforcement statusを `Active` に設定
+4. Target branches: `Include default branch` または patternに `master`
+5. Rule `Require a pull request before merging` を有効化
+6. Rule `Require status checks to pass before merging` を有効化
+7. Required checksに `ci` を追加
+8. 必要なら bypassを最小化（例: 管理者も対象にする）
 
-この設定で、PRのCIが失敗している場合は`master`へマージできず、結果として`master`へのpushは行われません。
+この設定で、PRのCIが失敗している場合は`master`へマージできません。
+
+補足:
+- Required checksの名前は通常「ジョブ名」です。このリポジトリは workflow内のjobが `ci` なので、`ci` を指定します。
+- 旧UIの `Settings > Branches > Branch protection rules` でも同等設定は可能ですが、今後はRulesets運用が分かりやすいです。
