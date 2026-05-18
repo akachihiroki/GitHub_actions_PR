@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Actions CI/CD Sample</title>
+    <style>
+      :root {
+        --bg1: #f9f7f1;
+        --bg2: #e8f4ea;
+        --text: #1f2a1f;
+        --accent: #2f855a;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top left, var(--bg2), var(--bg1));
+      }
+
+      .card {
+        width: min(680px, 92vw);
+        background: #ffffffd9;
+        border: 1px solid #c7dcc8;
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 18px 36px #4f6f5224;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(1.4rem, 2vw + 0.8rem, 2.1rem);
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      .verify {
+        margin-top: 12px;
+        font-size: 0.92rem;
+        color: #36503d;
+      }
+
+      strong {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>GitHub Actions CI/CDサンプル</h1>
+      <p id="result">計算結果を読み込み中...</p>
+      <p class="verify">CI/CD動作確認用更新: 2026-05-18 (再実行2回目)</p>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
