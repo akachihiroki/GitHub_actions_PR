@@ -8,7 +8,8 @@
 - `test/math.test.js`: Node.js組み込みテスト
 - `site/`: デプロイ対象の静的サイト
 - `scripts/build.mjs`: `site` を `dist` にコピーするビルド
-- `.github/workflows/test-actions.yml`: PR向けCI/CDワークフロー
+- `.github/workflows/test-actions.yml`: CIワークフロー（PR/Push向け）
+- `.github/workflows/deploy-pages.yml`: GitHub Pagesデプロイワークフロー（master push向け）
 
 ## ローカル実行
 
